@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+}
+
+group = 'me.chayapak1'
+version = '1.0.0'
+sourceCompatibility = '21'
+targetCompatibility = '21'
+
+repositories {
+    mavenLocal() // lokaal gepubliceerde dependencies
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.geysermc:mc-protocollib:1.4.0-SNAPSHOT'
+    implementation 'org.cloudburstmc:nbt:1.0.3'
+    implementation 'net.dv8tion:JDA:5.0.0-beta.14'
+    implementation 'org.mariadb.jdbc:mariadb-java-client:3.1.5'
+    implementation 'it.unimi.dsi:fastutil:8.6.6'
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.16.3'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.16.3'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+    options.release.set(21)
+}
+
+shadowJar {
+    archiveBaseName.set('Chomensbot')
+    archiveClassifier.set('')
+    archiveVersion.set(version)
+    mergeServiceFiles()
+}

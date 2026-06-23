@@ -1,0 +1,59 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+}
+
+group = 'com.yourname' // pas aan
+version = '1.0.0-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+repositories {
+    mavenLocal() // eerst check lokaal gepubliceerde snapshots
+    mavenCentral()
+    maven { url = uri("https://repo.opencollab.dev/maven-snapshots") } // voor snapshots
+}
+
+dependencies {
+    // MCProtocolLib lokaal gepubliceerd
+    implementation "org.geysermc.mcprotocollib:protocol:1.21.9-SNAPSHOT"
+
+    // NBT lokaal of via snapshot
+    implementation "org.cloudburstmc:nbt:1.0.3"
+
+    // MariaDB JDBC
+    implementation "org.mariadb.jdbc:mariadb-java-client:3.1.5"
+
+    // FastUtil
+    implementation "it.unimi.dsi:fastutil:8.6.6"
+
+    // Jackson
+    implementation "com.fasterxml.jackson.core:jackson-core:2.16.3"
+    implementation "com.fasterxml.jackson.core:jackson-databind:2.16.3"
+
+    // JDA
+    implementation "net.dv8tion:JDA:5.0.0-beta.14"
+
+    // Extra libs (optioneel)
+    implementation "org.slf4j:slf4j-api:2.0.9"
+    implementation "com.neovisionaries:nv-websocket-client:2.14"
+    implementation "com.squareup.okhttp3:okhttp:4.10.0"
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+tasks.shadowJar {
+    archiveBaseName.set("Chomensbot")
+    archiveClassifier.set("")
+    archiveVersion.set(version)
+}
+
+tasks.build {
+    dependsOn tasks.shadowJar
+}
