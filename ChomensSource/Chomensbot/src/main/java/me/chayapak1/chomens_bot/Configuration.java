@@ -92,7 +92,7 @@ public class Configuration {
     }
 
     public static class Eval {
-        public String address = "chayapak.chipmunk.land:32167";
+        public String address = "";
     }
 
     public static class ColorPalette {
@@ -127,7 +127,7 @@ public class Configuration {
 
         public static class Prefix {
             public boolean enabled = true;
-            public String prefix = "&8[&eChomeNS Bot&8]";
+            public String prefix = "&8[&eVoytas Bot&8]";
         }
     }
 
@@ -140,7 +140,7 @@ public class Configuration {
         public String ircChannel;
         public boolean hidden = false;
         public boolean useCore = true;
-        public boolean useCorePlaceBlock = false;
+        public boolean useCorePlaceBlock = true;
         public boolean useChat = false;
         public boolean useSNBTComponents = true;
         public boolean coreCommandSpy = true;
