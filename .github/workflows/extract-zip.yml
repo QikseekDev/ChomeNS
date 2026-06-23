@@ -11,7 +11,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Create extraction folder
-        run: mkdir -p ChromensSource
+        run: mkdir -p ChomensSource
 
       - name: Extract ZIP file
         run: unzip -o ChomensSource.zip -d ChomensSource
