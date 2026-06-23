@@ -14,7 +14,7 @@ jobs:
         run: mkdir -p ChromensSource
 
       - name: Extract ZIP file
-        run: unzip -o ChromensSource.zip -d ChromensSource
+        run: unzip -o ChomensSource.zip -d ChomensSource
 
       - name: Commit extracted files
         run: |
